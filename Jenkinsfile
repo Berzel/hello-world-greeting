@@ -6,13 +6,13 @@ pipeline {
             steps {
                 sh 'mvn clean verify -DskipITs=true';
                 junit '**/target/surefire-reports/TEST-*.xml'
-                archive 'target/*.jar'
+                archiveArtifacts 'target/*.jar'
             }
         }
 
         stage ('Static Code Analysis') {
             steps {
-                sh 'sonar-scanner -Dsonar.projectKey=example-project -Dsonar.sources=. -Dsonar.java.binaries=./target/ -Dsonar.host.url=http://localhost:9000 -Dsonar.sourceEncoding=UTF-8'
+                sh 'sonar-scanner -Dsonar.projectKey=example-project -Dsonar.sources=. -Dsonar.java.binaries=./target/'
             }
         }
 
