@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'jenkins_slave:latest'
+            label 'docker'
+        }
+    }
 
     stages {
         stage ('Build') {
