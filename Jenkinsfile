@@ -4,9 +4,11 @@ pipeline {
     }
 
     stages {
-        stage ('Build') {
+        stage ('Build & Unit Test') {
             steps {
-                sh 'echo "Building..."'
+                sh 'mvn clean verify -DskipITs=true';
+                junit '**/target/surefire-reports/TEST-*.xml'
+                archive 'target/*.jar'
             }
         }
 
