@@ -1,6 +1,5 @@
 pipeline {
-    node('docker') {
-
+    agent any;
     stages {
         stage ('Build & Unit Test') {
             steps {
@@ -28,8 +27,6 @@ pipeline {
             }
         }
     }
-    }
-
 
     post {
         always {
