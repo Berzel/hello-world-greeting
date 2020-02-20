@@ -1,9 +1,6 @@
 pipeline {
     agent {
-        dockerfile {
-            dir '.'
-            args '--network host --rm'
-        }
+        label 'docker'
     }
 
     stages {
