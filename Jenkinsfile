@@ -12,7 +12,7 @@ pipeline {
 
         stage ('Static Code Analysis') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.projectKey=example-project -Dsonar.host.url=http://localhost:9000 -Dsonar.projectVersion=$BUILD_NUMBER -Dsonar.login=sonarqube'
+                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=example-project -Dsonar.host.url=http://localhost:9000 -Dsonar.projectVersion=$BUILD_NUMBER -Dsonar.login=sonarqube'
             }
         }
 
