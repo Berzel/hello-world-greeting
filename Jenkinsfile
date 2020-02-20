@@ -18,6 +18,12 @@ pipeline {
             }
         }
 
+        stage ('Integration Testing') {
+            steps {
+                sh 'echo "Running integration tests.."'
+            }
+        }
+
         stage ('Deploy') {
             steps {
                 sh 'echo "Deploying.."'
