@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'jenkins_slave:latest'
-            args '--network host'
+            args '--network host --rm'
         }
     }
 
