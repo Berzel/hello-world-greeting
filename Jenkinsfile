@@ -1,6 +1,9 @@
 pipeline {
     agent {
-        label 'docker'
+        docker {
+            image 'jenkins_slave:latest'
+            args '--network host --rm'
+        }
     }
 
     stages {
