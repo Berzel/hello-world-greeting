@@ -6,8 +6,7 @@ pipeline {
             steps {
                 sh 'mvn clean verify -DskipITs=true';
                 junit '**/target/surefire-reports/TEST-*.xml'
-                sh 'ls -lh'
-                // archiveArtifacts 'target/**/*.jar'
+                archiveArtifacts 'target/**/*.war'
             }
         }
 
