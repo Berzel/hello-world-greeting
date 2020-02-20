@@ -2,7 +2,6 @@ pipeline {
     agent {
         docker {
             image 'jenkins_slave:latest'
-            label 'docker'
         }
     }
 
