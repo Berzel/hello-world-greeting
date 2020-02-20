@@ -2,11 +2,18 @@ pipeline {
     agent { node { label 'master' } }
 
     stages {
-        stage ('Build & Unit Test') {
+
+        stage ('Build') {
+            steps {
+                sh 'mvn clean install'
+                archiveArtifacts 'target/**/*.war'
+            }
+        }
+
+        stage ('Unit Testing') {
             steps {
                 sh 'mvn clean verify -DskipITs=true';
                 junit '**/target/surefire-reports/TEST-*.xml'
-                archiveArtifacts 'target/**/*.war'
             }
         }
 
