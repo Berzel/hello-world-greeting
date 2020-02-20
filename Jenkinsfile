@@ -36,8 +36,8 @@ pipeline {
                     spec: '''{
                         "files": [
                             {
-                            "pattern": "target/**/*.war",
-                            "target": "example-repo/hello-world-greeting/${BUILD_NUMBER}/"
+                            "pattern": "target/hello*.war",
+                            "target": "example-repo/${BUILD_NUMBER}/"
                             }
                         ]
                     }''',
