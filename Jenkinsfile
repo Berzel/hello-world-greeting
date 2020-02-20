@@ -1,5 +1,5 @@
 pipeline {
-    agent { node { label 'docker' } }
+    agent { node { label 'master' } }
 
     stages {
         stage ('Build & Unit Test') {
