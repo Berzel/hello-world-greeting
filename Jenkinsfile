@@ -12,9 +12,9 @@ pipeline {
             }
         }
 
-        stage ('Test') {
+        stage ('Static Code Analysis') {
             steps {
-                sh 'echo "Testing..."'
+                sh 'mvn sonar:sonar -Dsonar.projectKey=example-project -Dsonar.host.url=http://localhost:9000 -Dsonar.projectVersion=$BUILD_NUMBER -Dsonar.login=sonarqube'
             }
         }
 
