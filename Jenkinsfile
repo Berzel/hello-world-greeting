@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'jenkins_slave:latest'
+            image 'ubuntu:latest'
         }
     }
 
