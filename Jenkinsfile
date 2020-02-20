@@ -29,6 +29,22 @@ pipeline {
             }
         }
 
+        stage('Artifactory: Publish') {
+            steps {
+                rtUpload (
+                    serverId: 'Default Artifactory Server',
+                    spec: '''{
+                        "files": [
+                            {
+                            "pattern": "target/hello*.war",
+                            "target": "example-repo/hello-world-greeting/${BUILD_NUMBER}/"
+                            }
+                        ]
+                    }''',
+                )
+            }
+        }
+
         stage ('Deploy') {
             steps {
                 sh 'echo "Deploying to staging.."'
