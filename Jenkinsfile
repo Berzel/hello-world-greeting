@@ -19,7 +19,8 @@ pipeline {
 
         stage ('Static Code Analysis') {
             steps {
-                sh 'sonar-scanner -Dsonar.projectKey=example-project -Dsonar.sources=. -Dsonar.java.binaries=./target/'
+                // sh 'sonar-scanner -Dsonar.projectKey=example-project -Dsonar.sources=. -Dsonar.java.binaries=./target/'
+                sh 'echo "Performing static code analysis..."'
             }
         }
 
@@ -31,18 +32,17 @@ pipeline {
 
         stage('Artifactory: Publish') {
             steps {
-                // rtUpload (
-                //     serverId: 'Default Artifactory Server',
-                //     spec: '''{
-                //         "files": [
-                //             {
-                //             "pattern": "target/hello*.war",
-                //             "target": "example-repo/${BUILD_NUMBER}/"
-                //             }
-                //         ]
-                //     }''',
-                // )
-                sh 'echo "Publishing to artifactory..."'
+                rtUpload (
+                    serverId: 'Default Artifactory Server',
+                    spec: '''{
+                        "files": [
+                            {
+                            "pattern": "target/hello*.war",
+                            "target": "example-repo/${BUILD_NUMBER}/"
+                            }
+                        ]
+                    }''',
+                )
             }
         }
 
