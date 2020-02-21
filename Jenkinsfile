@@ -31,17 +31,18 @@ pipeline {
 
         stage('Artifactory: Publish') {
             steps {
-                rtUpload (
-                    serverId: 'Default Artifactory Server',
-                    spec: '''{
-                        "files": [
-                            {
-                            "pattern": "target/hello*.war",
-                            "target": "example-repo/${BUILD_NUMBER}/"
-                            }
-                        ]
-                    }''',
-                )
+                // rtUpload (
+                //     serverId: 'Default Artifactory Server',
+                //     spec: '''{
+                //         "files": [
+                //             {
+                //             "pattern": "target/hello*.war",
+                //             "target": "example-repo/${BUILD_NUMBER}/"
+                //             }
+                //         ]
+                //     }''',
+                // )
+                sh 'echo "Publishing to artifactory..."'
             }
         }
 
